@@ -2,6 +2,7 @@ package shop;
 
 public abstract class OrderProcessor {
 
+    // Метод process закрыт для изменения (финальный), но открыт для расширения через переопределение protected-методов
     public final void process(Order order) {
         validate(order);
         pay(order);

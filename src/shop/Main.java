@@ -5,6 +5,8 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
+        // Принцип D (Dependency Inversion) — высокоуровневый модуль (Main) зависит от абстракции OrderProcessor,
+        // а не от конкретной реализации SimpleOrderProcessor
         ShopService shop = new ShopService(new SimpleOrderProcessor());
         Cart cart = new Cart();
         Scanner sc = new Scanner(System.in);
@@ -22,7 +24,7 @@ public class Main {
                     System.out.print("ID: ");
                     Product p = shop.find(sc.nextLine());
                     if (p != null) {
-                        cart.add(p, Constants.DEFAULT_QTY);
+                        cart.add(p, Constants.DEFAULT_QTY); //использование константы вместо магического числа 1
                         System.out.println("Добавлено");
                     } else System.out.println("Нет товара");
                     break;

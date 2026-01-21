@@ -6,8 +6,7 @@ import java.util.List;
 public class ShopService {
 
     private final List<Product> products = new ArrayList<>();
-    private final List<Order> orders = new ArrayList<>();
-    private final OrderProcessor processor;
+    private final List<Order> orders = new ArrayList<>();private final OrderProcessor processor;
 
     public ShopService(OrderProcessor processor) {
         this.processor = processor;
@@ -24,6 +23,7 @@ public class ShopService {
     }
 
     public Order createOrder(Cart cart) {
+        // DRY — расчет налога вынесен в константу
         double total = cart.total() + cart.total() * Constants.TAX;
         Order o = new Order(new ArrayList<>(cart.getItems()), total);
         orders.add(o);
